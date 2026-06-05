@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Data Pipelines — Academica</title>
+  <link rel="stylesheet" href="/css/courses.css" />
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Academica</a>
+  <a href="/" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> All Courses</a>
+</nav>
+<div class="course-hero">
+  <div class="course-hero-content">
+    <p class="course-eyebrow">Data Engineering <span class="course-eyebrow-sep">·</span> Intermediate <span class="course-eyebrow-sep">·</span> 38 hours</p>
+    <h1 class="course-title">Modern Data Pipelines</h1>
+    <p class="course-tagline">Design and implement robust ETL pipelines with dbt, Airflow, and cloud data warehouses. Turn raw data into reliable, queryable assets your team can trust.</p>
+    <div class="course-quick-meta">
+      <div class="qm-item"><span class="qm-label">Duration</span><span class="qm-value">38 hours</span></div>
+      <div class="qm-item"><span class="qm-label">Level</span><span class="qm-value">Intermediate</span></div>
+      <div class="qm-item"><span class="qm-label">Enrolled</span><span class="qm-value">267 students</span></div>
+      <div class="qm-item"><span class="qm-label">Certificate</span><span class="qm-value">Included</span></div>
+    </div>
+    <h2 class="learn-title">What you'll learn</h2>
+    <div class="learn-grid">
+      <div class="learn-item">Design medallion architecture (bronze/silver/gold)</div>
+      <div class="learn-item">Build and test dbt models in production</div>
+      <div class="learn-item">Orchestrate pipelines with Apache Airflow</div>
+      <div class="learn-item">Implement data quality checks and monitoring</div>
+      <div class="learn-item">Work with Snowflake, BigQuery, and Redshift</div>
+      <div class="learn-item">Optimize query performance and warehouse costs</div>
+    </div>
+    <div class="curriculum">
+      <h2 class="curriculum-title">Curriculum</h2>
+      <div class="module open">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 1 — Data Warehouse Architecture</span><span class="module-count">5 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">Modern data stack overview</div>
+          <div class="lesson-item">Medallion architecture patterns</div>
+          <div class="lesson-item">Dimensional modeling vs. OBT</div>
+          <div class="lesson-item">Data catalog and lineage</div>
+          <div class="lesson-item">Lab: Design a warehouse for an e-commerce dataset</div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 2 — dbt & Transformation</span><span class="module-count">7 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">dbt project structure and best practices</div>
+          <div class="lesson-item">Sources, staging, and marts</div>
+          <div class="lesson-item">Testing: singular, generic, and custom</div>
+          <div class="lesson-item">Macros and packages</div>
+          <div class="lesson-item">Incremental models and snapshots</div>
+          <div class="lesson-item">dbt Cloud CI/CD setup</div>
+          <div class="lesson-item">Lab: Full dbt project from scratch</div>
+        </div>
+      </div>
+    </div>
+    <div class="instructor">
+      <h2 class="instructor-title">Your Instructor</h2>
+      <div class="instructor-card">
+        <div class="instructor-avatar">TW</div>
+        <div>
+          <div class="instructor-name">Tobias Weber</div>
+          <div class="instructor-role">Staff Data Engineer · Spotify</div>
+          <p class="instructor-bio">Tobias has built data infrastructure at Spotify, Zalando, and two fintech startups. He's a dbt Labs community figure and contributor to Apache Airflow, and writes a weekly newsletter on data engineering for 25k practitioners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="course-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-img">📊</div>
+      <div class="sidebar-body">
+        <div class="sidebar-price">$349</div>
+        <div class="sidebar-price-note">One-time payment · Lifetime access</div>
+        <button class="btn-checkout" id="checkout-btn">Proceed to Checkout <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        <ul class="sidebar-includes">
+          <li><span>▶</span> 38 hours of video content</li>
+          <li><span>💾</span> dbt project templates</li>
+          <li><span>🏆</span> Certificate of completion</li>
+          <li><span>♾️</span> Lifetime access & updates</li>
+          <li><span>💬</span> Private Discord community</li>
+        </ul>
+        <div class="sidebar-guarantee">30-day money-back guarantee</div>
+      </div>
+    </div>
+  </aside>
+</div>
+<script>
+  const PRICE_ID = "price_COURSE4_REPLACE_ME";
+  document.getElementById("checkout-btn").addEventListener("click", async () => {
+    const btn = document.getElementById("checkout-btn");
+    btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Redirecting...';
+    try {
+      const res = await fetch(`/create-checkout-session/${PRICE_ID}`, { method: "POST", headers: { "Content-Type": "application/json" } });
+      const data = await res.json();
+      if (data.url) { window.location.href = data.url; } else { throw new Error(data.error); }
+    } catch (err) { alert("Payment error: " + err.message); btn.disabled = false; btn.innerHTML = 'Proceed to Checkout'; }
+  });
+</script>
+</body>
+</html>

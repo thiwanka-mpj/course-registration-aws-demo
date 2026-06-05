@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scalable Systems Architecture — Academica</title>
+  <link rel="stylesheet" href="/css/courses.css" />
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Academica</a>
+  <a href="/" class="nav-back">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    All Courses
+  </a>
+</nav>
+
+<div class="course-hero">
+  <div class="course-hero-content">
+    <p class="course-eyebrow">
+      Systems Design <span class="course-eyebrow-sep">·</span> Intermediate <span class="course-eyebrow-sep">·</span> 42 hours
+    </p>
+    <h1 class="course-title">Scalable Systems Architecture</h1>
+    <p class="course-tagline">Design distributed systems that handle millions of requests. Learn the trade-offs, patterns, and hard-won lessons behind the systems powering the modern internet.</p>
+
+    <div class="course-quick-meta">
+      <div class="qm-item"><span class="qm-label">Duration</span><span class="qm-value">42 hours</span></div>
+      <div class="qm-item"><span class="qm-label">Level</span><span class="qm-value">Intermediate</span></div>
+      <div class="qm-item"><span class="qm-label">Enrolled</span><span class="qm-value">348 students</span></div>
+      <div class="qm-item"><span class="qm-label">Certificate</span><span class="qm-value">Included</span></div>
+    </div>
+
+    <h2 class="learn-title">What you'll learn</h2>
+    <div class="learn-grid">
+      <div class="learn-item">Design for horizontal scalability from day one</div>
+      <div class="learn-item">Implement event-driven microservices with Kafka</div>
+      <div class="learn-item">Master load balancing and service discovery</div>
+      <div class="learn-item">Apply CAP theorem to real architecture decisions</div>
+      <div class="learn-item">Build resilient systems with circuit breakers</div>
+      <div class="learn-item">Monitor and debug distributed systems in production</div>
+    </div>
+
+    <div class="curriculum">
+      <h2 class="curriculum-title">Curriculum</h2>
+
+      <div class="module open">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 1 — Distributed Systems Fundamentals</span>
+          <span class="module-count">6 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">CAP theorem and its practical implications</div>
+          <div class="lesson-item">Consistency models: strong, eventual, causal</div>
+          <div class="lesson-item">Replication strategies: leader-follower, multi-leader</div>
+          <div class="lesson-item">Partitioning and sharding strategies</div>
+          <div class="lesson-item">Distributed transactions and sagas</div>
+          <div class="lesson-item">Lab: Build a basic consensus algorithm</div>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 2 — Microservices Architecture</span>
+          <span class="module-count">8 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">Domain-driven design and bounded contexts</div>
+          <div class="lesson-item">Service decomposition patterns</div>
+          <div class="lesson-item">API gateway design and aggregation</div>
+          <div class="lesson-item">Event sourcing with Kafka</div>
+          <div class="lesson-item">CQRS implementation patterns</div>
+          <div class="lesson-item">Service mesh with Istio</div>
+          <div class="lesson-item">gRPC vs REST vs GraphQL trade-offs</div>
+          <div class="lesson-item">Lab: Build a microservices e-commerce backend</div>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 3 — Reliability & Observability</span>
+          <span class="module-count">7 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">SLOs, SLAs, and error budgets</div>
+          <div class="lesson-item">Circuit breakers and bulkheads</div>
+          <div class="lesson-item">Distributed tracing with OpenTelemetry</div>
+          <div class="lesson-item">Metrics, logs, and alerts at scale</div>
+          <div class="lesson-item">Chaos engineering principles</div>
+          <div class="lesson-item">Incident response and postmortems</div>
+          <div class="lesson-item">Lab: GameDay exercise with chaos injection</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="instructor">
+      <h2 class="instructor-title">Your Instructor</h2>
+      <div class="instructor-card">
+        <div class="instructor-avatar">AK</div>
+        <div>
+          <div class="instructor-name">Arjun Kapoor</div>
+          <div class="instructor-role">Principal Engineer · formerly Google, Uber</div>
+          <p class="instructor-bio">Arjun spent 12 years building distributed systems at Google and Uber, scaling search infrastructure and the real-time dispatch system to serve 8M concurrent rides. He holds 6 patents in distributed systems and writes the popular Systems Thinking newsletter with 40k subscribers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="course-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-img">⚙️</div>
+      <div class="sidebar-body">
+        <div class="sidebar-price">$299</div>
+        <div class="sidebar-price-note">One-time payment · Lifetime access</div>
+        <button class="btn-checkout" id="checkout-btn">
+          Proceed to Checkout
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <ul class="sidebar-includes">
+          <li><span>▶</span> 42 hours of video content</li>
+          <li><span>💾</span> Downloadable resources & code</li>
+          <li><span>🏆</span> Certificate of completion</li>
+          <li><span>♾️</span> Lifetime access & updates</li>
+          <li><span>💬</span> Private Discord community</li>
+        </ul>
+        <div class="sidebar-guarantee">30-day money-back guarantee</div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script>
+  // Replace with your actual Stripe Price ID
+  const PRICE_ID = "prod_Ue7WwMejnMfcba";
+
+  document.getElementById("checkout-btn").addEventListener("click", async () => {
+    const btn = document.getElementById("checkout-btn");
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Redirecting...';
+
+    try {
+      const res = await fetch(`/create-checkout-session/${PRICE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Unknown error");
+      }
+    } catch (err) {
+      alert("Payment error: " + err.message);
+      btn.disabled = false;
+      btn.innerHTML = 'Proceed to Checkout <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+    }
+  });
+</script>
+</body>
+</html>

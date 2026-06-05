@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enrollment Confirmed — Academica</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .status-page {
+      position: relative; z-index: 1;
+      min-height: 80vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 3rem 1.5rem;
+    }
+    .status-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(107,189,148,0.12); border: 1.5px solid rgba(107,189,148,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin: 0 auto 2rem;
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+    .status-page h1 {
+      font-family: var(--ff-serif); font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300; letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .status-page p { color: var(--text2); max-width: 42ch; line-height: 1.7; margin-bottom: 0.5rem; }
+    .email-display {
+      font-family: var(--ff-mono); font-size: 0.85rem; color: var(--accent);
+      padding: 0.4rem 0.9rem; background: rgba(200,169,110,0.08);
+      border: 1px solid rgba(200,169,110,0.25); border-radius: 100px;
+      margin: 1rem auto;
+    }
+    .btn-home {
+      margin-top: 2rem; font-family: var(--ff-mono); font-size: 0.7rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.7rem 1.5rem; border-radius: var(--radius);
+      border: 1px solid var(--border2); background: transparent;
+      color: var(--text); text-decoration: none;
+      transition: all 0.25s ease; display: inline-block;
+    }
+    .btn-home:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .divider { width: 40px; height: 1px; background: var(--border2); margin: 1.5rem auto; }
+    .next-steps { max-width: 340px; text-align: left; }
+    .next-steps h3 { font-family: var(--ff-serif); font-size: 1.1rem; font-weight: 400; margin-bottom: 0.75rem; }
+    .next-step { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.82rem; color: var(--text2); }
+    .next-step:last-child { border-bottom: none; }
+    .step-num { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--accent); background: rgba(200,169,110,0.1); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-mark">Academica</span>
+    <span class="nav-logo-text">Learning Institute</span>
+  </a>
+</nav>
+
+<div class="status-page">
+  <div class="status-icon">✓</div>
+  <h1>You're enrolled.</h1>
+  <p>Payment confirmed. Your course access has been activated and a receipt is on its way to:</p>
+  <div class="email-display" id="customer-email">Loading...</div>
+  <p style="font-size:0.8rem; color: var(--text3)">Check your spam folder if you don't see it within 5 minutes.</p>
+
+  <div class="divider"></div>
+
+  <div class="next-steps">
+    <h3>What happens next</h3>
+    <div class="next-step"><span class="step-num">1</span>You'll receive a confirmation email with your login credentials.</div>
+    <div class="next-step"><span class="step-num">2</span>Join the private Discord community — the link is in your welcome email.</div>
+    <div class="next-step"><span class="step-num">3</span>Start learning at your own pace. All lessons are immediately available.</div>
+  </div>
+
+  <a href="/" class="btn-home">← Browse More Courses</a>
+</div>
+
+<script>
+  async function loadSessionStatus() {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("session_id");
+    const emailEl = document.getElementById("customer-email");
+
+    if (!sessionId) { emailEl.textContent = "your registered email"; return; }
+
+    try {
+      const res = await fetch(`/session-status?session_id=${sessionId}`);
+      const data = await res.json();
+      emailEl.textContent = data.customer_email || "your registered email";
+    } catch {
+      emailEl.textContent = "your registered email";
+    }
+  }
+  loadSessionStatus();
+</script>
+</body>
+</html>

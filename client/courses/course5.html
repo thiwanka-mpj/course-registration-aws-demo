@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application Security Mastery — Academica</title>
+  <link rel="stylesheet" href="/css/courses.css" />
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Academica</a>
+  <a href="/" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> All Courses</a>
+</nav>
+<div class="course-hero">
+  <div class="course-hero-content">
+    <p class="course-eyebrow">Cybersecurity <span class="course-eyebrow-sep">·</span> Advanced <span class="course-eyebrow-sep">·</span> 48 hours</p>
+    <h1 class="course-title">Application Security Mastery</h1>
+    <p class="course-tagline">Think like an attacker to build like a defender. Penetration testing, secure code review, and threat modeling for engineers who want to build genuinely secure systems.</p>
+    <div class="course-quick-meta">
+      <div class="qm-item"><span class="qm-label">Duration</span><span class="qm-value">48 hours</span></div>
+      <div class="qm-item"><span class="qm-label">Level</span><span class="qm-value">Advanced</span></div>
+      <div class="qm-item"><span class="qm-label">Enrolled</span><span class="qm-value">189 students</span></div>
+      <div class="qm-item"><span class="qm-label">Certificate</span><span class="qm-value">Included</span></div>
+    </div>
+    <h2 class="learn-title">What you'll learn</h2>
+    <div class="learn-grid">
+      <div class="learn-item">OWASP Top 10 deep dives with exploit demos</div>
+      <div class="learn-item">Threat modeling with STRIDE and PASTA</div>
+      <div class="learn-item">Secure code review and static analysis</div>
+      <div class="learn-item">Web application penetration testing</div>
+      <div class="learn-item">Secrets management and cryptography</div>
+      <div class="learn-item">Security in CI/CD pipelines (DevSecOps)</div>
+    </div>
+    <div class="curriculum">
+      <h2 class="curriculum-title">Curriculum</h2>
+      <div class="module open">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 1 — Attacker Mindset</span><span class="module-count">6 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">How attackers think and operate</div>
+          <div class="lesson-item">Reconnaissance and attack surface mapping</div>
+          <div class="lesson-item">OWASP Top 10: injection, XSS, IDOR</div>
+          <div class="lesson-item">Authentication and session attacks</div>
+          <div class="lesson-item">API security vulnerabilities</div>
+          <div class="lesson-item">Lab: Exploit a vulnerable app in a safe environment</div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 2 — Threat Modeling & Secure Design</span><span class="module-count">5 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">STRIDE methodology in practice</div>
+          <div class="lesson-item">Data flow diagrams for security analysis</div>
+          <div class="lesson-item">Trust boundaries and privilege levels</div>
+          <div class="lesson-item">Security requirements from threat models</div>
+          <div class="lesson-item">Lab: Threat model a real microservices system</div>
+        </div>
+      </div>
+    </div>
+    <div class="instructor">
+      <h2 class="instructor-title">Your Instructor</h2>
+      <div class="instructor-card">
+        <div class="instructor-avatar">DM</div>
+        <div>
+          <div class="instructor-name">Dana Marsh</div>
+          <div class="instructor-role">Principal Security Engineer · formerly NSA, Cloudflare</div>
+          <p class="instructor-bio">Dana brings 15 years of offensive and defensive security expertise from the NSA and Cloudflare's red team. She's a CVE finder, speaker at DEF CON, and the author of "Practical Application Security" — a practitioner's guide used by security teams at 200+ companies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="course-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-img">🔐</div>
+      <div class="sidebar-body">
+        <div class="sidebar-price">$399</div>
+        <div class="sidebar-price-note">One-time payment · Lifetime access</div>
+        <button class="btn-checkout" id="checkout-btn">Proceed to Checkout <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        <ul class="sidebar-includes">
+          <li><span>▶</span> 48 hours of video content</li>
+          <li><span>💾</span> Vulnerable app lab environment</li>
+          <li><span>🏆</span> Certificate of completion</li>
+          <li><span>♾️</span> Lifetime access & updates</li>
+          <li><span>💬</span> Private Discord community</li>
+        </ul>
+        <div class="sidebar-guarantee">30-day money-back guarantee</div>
+      </div>
+    </div>
+  </aside>
+</div>
+<script>
+  const PRICE_ID = "price_COURSE5_REPLACE_ME";
+  document.getElementById("checkout-btn").addEventListener("click", async () => {
+    const btn = document.getElementById("checkout-btn");
+    btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Redirecting...';
+    try {
+      const res = await fetch(`/create-checkout-session/${PRICE_ID}`, { method: "POST", headers: { "Content-Type": "application/json" } });
+      const data = await res.json();
+      if (data.url) { window.location.href = data.url; } else { throw new Error(data.error); }
+    } catch (err) { alert("Payment error: " + err.message); btn.disabled = false; btn.innerHTML = 'Proceed to Checkout'; }
+  });
+</script>
+</body>
+</html>

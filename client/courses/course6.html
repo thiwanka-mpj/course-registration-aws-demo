@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS Cloud Practitioner — Academica</title>
+  <link rel="stylesheet" href="/css/courses.css" />
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Academica</a>
+  <a href="/" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> All Courses</a>
+</nav>
+<div class="course-hero">
+  <div class="course-hero-content">
+    <p class="course-eyebrow">Cloud & DevOps <span class="course-eyebrow-sep">·</span> Beginner <span class="course-eyebrow-sep">·</span> 32 hours</p>
+    <h1 class="course-title">AWS Cloud Practitioner</h1>
+    <p class="course-tagline">Go from zero to confident cloud architect. Master the core services powering modern applications and earn your AWS certification in 8 weeks.</p>
+    <div class="course-quick-meta">
+      <div class="qm-item"><span class="qm-label">Duration</span><span class="qm-value">32 hours</span></div>
+      <div class="qm-item"><span class="qm-label">Level</span><span class="qm-value">Beginner</span></div>
+      <div class="qm-item"><span class="qm-label">Enrolled</span><span class="qm-value">663 students</span></div>
+      <div class="qm-item"><span class="qm-label">Certificate</span><span class="qm-value">Included</span></div>
+    </div>
+    <h2 class="learn-title">What you'll learn</h2>
+    <div class="learn-grid">
+      <div class="learn-item">Launch and manage EC2 instances confidently</div>
+      <div class="learn-item">Store and serve data with S3, RDS, and DynamoDB</div>
+      <div class="learn-item">Build serverless apps with Lambda and API Gateway</div>
+      <div class="learn-item">Secure workloads with IAM, VPCs, and Security Groups</div>
+      <div class="learn-item">Deploy with CloudFormation and CDK</div>
+      <div class="learn-item">Pass the AWS Cloud Practitioner exam</div>
+    </div>
+    <div class="curriculum">
+      <h2 class="curriculum-title">Curriculum</h2>
+      <div class="module open">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 1 — AWS Foundations</span><span class="module-count">5 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">Cloud computing models and AWS global infrastructure</div>
+          <div class="lesson-item">IAM: users, roles, policies, and MFA</div>
+          <div class="lesson-item">VPC: subnets, routing, and security groups</div>
+          <div class="lesson-item">EC2: instances, AMIs, and Auto Scaling</div>
+          <div class="lesson-item">Lab: Deploy a secure, scalable web application</div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 2 — Storage, Databases & Serverless</span><span class="module-count">6 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">S3: storage classes, lifecycle, and presigned URLs</div>
+          <div class="lesson-item">RDS and Aurora: managed databases</div>
+          <div class="lesson-item">DynamoDB: patterns and best practices</div>
+          <div class="lesson-item">Lambda and API Gateway</div>
+          <div class="lesson-item">SQS, SNS, and EventBridge</div>
+          <div class="lesson-item">Lab: Build a serverless API from scratch</div>
+        </div>
+      </div>
+    </div>
+    <div class="instructor">
+      <h2 class="instructor-title">Your Instructor</h2>
+      <div class="instructor-card">
+        <div class="instructor-avatar">NK</div>
+        <div>
+          <div class="instructor-name">Nadia Kim</div>
+          <div class="instructor-role">AWS Solutions Architect · Amazon Web Services</div>
+          <p class="instructor-bio">Nadia is an AWS Solutions Architect and certified trainer who has helped 300+ organizations migrate to AWS. She's an 8× AWS Certified practitioner and the creator of the popular "AWS in Plain English" YouTube series with 200k subscribers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="course-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-img">☁️</div>
+      <div class="sidebar-body">
+        <div class="sidebar-price">$249</div>
+        <div class="sidebar-price-note">One-time payment · Lifetime access</div>
+        <button class="btn-checkout" id="checkout-btn">Proceed to Checkout <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        <ul class="sidebar-includes">
+          <li><span>▶</span> 32 hours of video content</li>
+          <li><span>💾</span> AWS architecture diagrams</li>
+          <li><span>🏆</span> Certificate of completion</li>
+          <li><span>♾️</span> Lifetime access & updates</li>
+          <li><span>💬</span> Private Discord community</li>
+        </ul>
+        <div class="sidebar-guarantee">30-day money-back guarantee</div>
+      </div>
+    </div>
+  </aside>
+</div>
+<script>
+  const PRICE_ID = "price_COURSE6_REPLACE_ME";
+  document.getElementById("checkout-btn").addEventListener("click", async () => {
+    const btn = document.getElementById("checkout-btn");
+    btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Redirecting...';
+    try {
+      const res = await fetch(`/create-checkout-session/${PRICE_ID}`, { method: "POST", headers: { "Content-Type": "application/json" } });
+      const data = await res.json();
+      if (data.url) { window.location.href = data.url; } else { throw new Error(data.error); }
+    } catch (err) { alert("Payment error: " + err.message); btn.disabled = false; btn.innerHTML = 'Proceed to Checkout'; }
+  });
+</script>
+</body>
+</html>

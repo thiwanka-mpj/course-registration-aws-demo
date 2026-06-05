@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX Fundamentals & Research — Academica</title>
+  <link rel="stylesheet" href="/css/courses.css" />
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Academica</a>
+  <a href="/" class="nav-back"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> All Courses</a>
+</nav>
+<div class="course-hero">
+  <div class="course-hero-content">
+    <p class="course-eyebrow">Product Design <span class="course-eyebrow-sep">·</span> Beginner <span class="course-eyebrow-sep">·</span> 28 hours</p>
+    <h1 class="course-title">UX Fundamentals & Research</h1>
+    <p class="course-tagline">Master the research methods, design principles, and usability practices that separate great products from good ones. No design background required.</p>
+    <div class="course-quick-meta">
+      <div class="qm-item"><span class="qm-label">Duration</span><span class="qm-value">28 hours</span></div>
+      <div class="qm-item"><span class="qm-label">Level</span><span class="qm-value">Beginner</span></div>
+      <div class="qm-item"><span class="qm-label">Enrolled</span><span class="qm-value">421 students</span></div>
+      <div class="qm-item"><span class="qm-label">Certificate</span><span class="qm-value">Included</span></div>
+    </div>
+    <h2 class="learn-title">What you'll learn</h2>
+    <div class="learn-grid">
+      <div class="learn-item">Plan and conduct user interviews</div>
+      <div class="learn-item">Create wireframes and interactive prototypes in Figma</div>
+      <div class="learn-item">Run moderated and unmoderated usability tests</div>
+      <div class="learn-item">Apply cognitive psychology to UI decisions</div>
+      <div class="learn-item">Build and maintain a design system</div>
+      <div class="learn-item">Present research findings to stakeholders</div>
+    </div>
+    <div class="curriculum">
+      <h2 class="curriculum-title">Curriculum</h2>
+      <div class="module open">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 1 — UX Research Methods</span><span class="module-count">6 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">Research planning and recruitment</div>
+          <div class="lesson-item">Interview techniques that reveal real insights</div>
+          <div class="lesson-item">Surveys, card sorting, and tree testing</div>
+          <div class="lesson-item">Affinity mapping and synthesis</div>
+          <div class="lesson-item">Writing research reports that drive action</div>
+          <div class="lesson-item">Lab: Conduct 3 user interviews and synthesize findings</div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <span class="module-name">Module 2 — Interaction Design</span><span class="module-count">7 lessons</span>
+        </div>
+        <div class="module-lessons">
+          <div class="lesson-item">Gestalt principles in UI design</div>
+          <div class="lesson-item">Information architecture and navigation patterns</div>
+          <div class="lesson-item">Wireframing from scratch in Figma</div>
+          <div class="lesson-item">Prototyping interactive flows</div>
+          <div class="lesson-item">Accessibility and inclusive design</div>
+          <div class="lesson-item">Design tokens and component libraries</div>
+          <div class="lesson-item">Lab: Design a complete onboarding flow</div>
+        </div>
+      </div>
+    </div>
+    <div class="instructor">
+      <h2 class="instructor-title">Your Instructor</h2>
+      <div class="instructor-card">
+        <div class="instructor-avatar">LO</div>
+        <div>
+          <div class="instructor-name">Lena Okonkwo</div>
+          <div class="instructor-role">Head of Design Research · Figma</div>
+          <p class="instructor-bio">Lena leads design research at Figma and has shaped the research practice at Airbnb and Dropbox over her 10-year career. She's passionate about democratizing UX research and making evidence-based design the norm, not the exception.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="course-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-img">🎨</div>
+      <div class="sidebar-body">
+        <div class="sidebar-price">$199</div>
+        <div class="sidebar-price-note">One-time payment · Lifetime access</div>
+        <button class="btn-checkout" id="checkout-btn">Proceed to Checkout <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        <ul class="sidebar-includes">
+          <li><span>▶</span> 28 hours of video content</li>
+          <li><span>💾</span> Figma templates & resources</li>
+          <li><span>🏆</span> Certificate of completion</li>
+          <li><span>♾️</span> Lifetime access & updates</li>
+          <li><span>💬</span> Private Discord community</li>
+        </ul>
+        <div class="sidebar-guarantee">30-day money-back guarantee</div>
+      </div>
+    </div>
+  </aside>
+</div>
+<script>
+  const PRICE_ID = "price_COURSE3_REPLACE_ME";
+  document.getElementById("checkout-btn").addEventListener("click", async () => {
+    const btn = document.getElementById("checkout-btn");
+    btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Redirecting...';
+    try {
+      const res = await fetch(`/create-checkout-session/${PRICE_ID}`, { method: "POST", headers: { "Content-Type": "application/json" } });
+      const data = await res.json();
+      if (data.url) { window.location.href = data.url; } else { throw new Error(data.error); }
+    } catch (err) { alert("Payment error: " + err.message); btn.disabled = false; btn.innerHTML = 'Proceed to Checkout'; }
+  });
+</script>
+</body>
+</html>
