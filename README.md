@@ -6,7 +6,6 @@
 course-registration/
 ├── server.js                  # Express server — routes, Stripe checkout
 ├── package.json
-├── .env.example               # Copy to .env and fill in your keys
 ├── Dockerfile
 ├── docker-compose.yml
 ├── .gitignore
